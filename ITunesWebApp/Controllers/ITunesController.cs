@@ -7,7 +7,8 @@ namespace ITunesWebApp.Controllers
 {
     public class ITunesController : Controller
     {
-        Reader reader = new Reader();
+        static Reader reader = new Reader();
+        static ClickMap clickMap = new ClickMap();
         //
         // GET: /iTunes/
         public string Index()
@@ -24,6 +25,16 @@ namespace ITunesWebApp.Controllers
             {
                 name = "Apple";
             }
+
+            if (clickMap.NameFrequencyMap.ContainsKey(name))
+            {
+                clickMap.NameFrequencyMap[name] = clickMap.NameFrequencyMap[name] + 1;
+            }
+            else
+            {
+                clickMap.NameFrequencyMap[name] = 1;
+            }
+
             return reader.QueryItunes(name);
             //return HtmlEncoder.Default.Encode($"Searching for {name}.");
             //https://localhost:7195/iTunes/Search?name=Apple
@@ -31,5 +42,19 @@ namespace ITunesWebApp.Controllers
             //https://localhost:7195/iTunes/Search?name=Prakhar
             //https://localhost:7195/iTunes/Search?name=Prakhar\ Saxena
         }
+
+        //
+        // GET: /iTunes/Clicks
+        public Dictionary<string, int> Clicks()
+        {
+            Console.WriteLine("Returning Search Frequency Map.");
+            Console.WriteLine("Name Count: " + clickMap.NameFrequencyMap.Count);
+            foreach (KeyValuePair<string, int> kv in clickMap.NameFrequencyMap)
+            {
+                Console.WriteLine(kv.Key + " => " + kv.Value);
+            }
+            return clickMap.NameFrequencyMap;
+        }
+        //https://localhost:7195/iTunes/Clicks
     }
 }

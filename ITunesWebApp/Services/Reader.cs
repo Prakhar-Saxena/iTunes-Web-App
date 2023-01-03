@@ -13,12 +13,14 @@ namespace ITunesWebApp.Services
         {
             try
             {
-                HttpClient client = new HttpClient(); // Not certain about defining it here
+                HttpClient client = new HttpClient(); // Not certain about defining it here ; I don't think I can keep this static because I've to change the baseUrl everytime
                 string url = iTunesApiURL + name;
-                Console.WriteLine(url);
+                Console.WriteLine("Will attempt to make a call to: " + url);
                 client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                Console.WriteLine("Attempting to make a call to the iTunes API.");
                 var responseTask = client.GetAsync(url);
+                Console.WriteLine("Waiting on Response");
                 responseTask.Wait();
                 var result = responseTask.Result;
                 Console.WriteLine(result);
