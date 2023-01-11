@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "iTunes Search Frequencies";
+}
+<h2> iTunes Search Frequencies</h2>
+<style>
+    tr:hover {
+        background: grey;
+    }
+
+    td a {
+        display: block;
+    }
+</style>
+@model Dictionary<string, int>
+<table>
+    <tr>
+        <th>Search String</th>
+        <th>Frequency</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@Html.Encode(m.Key)</td>
+            <td>@Html.Encode(m.Value)</td>
+        </tr>
+    }
+</table>

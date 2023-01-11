@@ -1,10 +1,13 @@
-﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
+﻿@model IEnumerable<ITunesWebApp.Models.SearchItem>
+<h3>
+    Search iTunes
+</h3>
+@*@using (Ajax.BeginForm("Index", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "AllSearchItems" }))
+{
+    <input id="SearchBox" type="text" name="value" />
+    <input id="submit" type="submit" name="Search" />
 }
+<div id="AllSearchItems">
+    @Html.Partial("Detail", Model)
+</div> *@
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>

@@ -11,15 +11,20 @@ namespace ITunesWebApp.Controllers
         static ClickMap clickMap = new ClickMap();
         //
         // GET: /iTunes/
-        public string Index()
+        /*public string Index()
         {
             //return View();
             return "iTunes Index.";
+        }*/
+        public ViewResult Index() //: /Views/ITunes/Index.cshtml, /Views/Shared/Index.cshtml, /Pages/Shared/Index.cshtml
+        {
+            return View();
+            //return "iTunes Index.";
         }
         //
         // GET: /iTunes/Search
         // Requires using System.Text.Encodings.Web;
-        public List<SearchItem> Search(string name)
+        public ViewResult Search(string name)
         {
             if (name == null)
             {
@@ -35,7 +40,7 @@ namespace ITunesWebApp.Controllers
                 clickMap.NameFrequencyMap[name] = 1;
             }
 
-            return reader.QueryItunes(name);
+            return View(reader.QueryItunes(name));
             //return HtmlEncoder.Default.Encode($"Searching for {name}.");
             //https://localhost:7195/iTunes/Search?name=Apple
             //https://localhost:7195/iTunes/Search?name=ReachMobi
@@ -45,7 +50,7 @@ namespace ITunesWebApp.Controllers
 
         //
         // GET: /iTunes/Clicks
-        public Dictionary<string, int> Clicks()
+        public ViewResult Clicks()
         {
             Console.WriteLine("Returning Search Frequency Map.");
             Console.WriteLine("Name Count: " + clickMap.NameFrequencyMap.Count);
@@ -53,7 +58,7 @@ namespace ITunesWebApp.Controllers
             {
                 Console.WriteLine(kv.Key + " => " + kv.Value);
             }
-            return clickMap.NameFrequencyMap;
+            return View(clickMap.NameFrequencyMap);
         }
         //https://localhost:7195/iTunes/Clicks
     }

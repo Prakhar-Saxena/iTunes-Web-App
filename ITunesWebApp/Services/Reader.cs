@@ -45,7 +45,7 @@ namespace ITunesWebApp.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine("Something went wrong whilst fetching information from iTunes.");
+                Console.WriteLine("Something went wrong whilst fetching information from iTunes: " + e.Message);
                 return new List<SearchItem>();
             }
             

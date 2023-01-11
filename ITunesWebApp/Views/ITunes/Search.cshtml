@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "iTunes Search Results";
+}
+<h2> iTunes Search Results</h2>
+<style>
+    tr:hover {
+        background: grey;
+    }
+
+    td a {
+        display: block;
+    }
+</style>
+@model IEnumerable<ITunesWebApp.Models.SearchItem>
+<table>
+    <tr>
+        <th>Wrapper Type</th>
+        <th>Kind</th>
+        <th>Artist Id</th>
+        <th>Collection Id</th>
+        <th>Track Id</th>
+        <th>Artist Name</th>
+        <th>Collection Name</th>
+        <th>Track Name</th>
+        <th>Collection Censored Name</th>
+        <th>Track Censored Name</th>
+        <th>Artist View Url</th>
+        <th>Collection View Url</th>
+        <th>Track View Url</th>
+        <th>Preview Url</th>
+        <th>Artwork Url30</th>
+        <th>Artwork Url60</th>
+        <th>Artwork Url100</th>
+        <th>Collection Price</th>
+        <th>Track Price</th>
+        <th>Collection Hd Price</th>
+        <th>Track Hd Price</th>
+        <th>Release Date</th>
+        <th>Collection Explicitness</th>
+        <th>Track Explicitness</th>
+        <th>Disc Count</th>
+        <th>Disc Number</th>
+        <th>Track Count</th>
+        <th>Track Number</th>
+        <th>Track Time Millis</th>
+        <th>Country</th>
+        <th>Currency</th>
+        <th>Primary Genre Name</th>
+        <th>Content Advisory Rating</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td> <a href="@Html.Encode(m.collectionViewUrl)" target="_blank" rel="noopener noreferrer"> @Html.Encode(m.wrapperType) </a> </td>
+            <td> @Html.Encode(m.kind) </td>
+            <td> @Html.Encode(m.artistId) </td>
+            <td> @Html.Encode(m.collectionId) </td>
+            <td> @Html.Encode(m.trackId) </td>
+            <td> @Html.Encode(m.artistName) </td>
+            <td> @Html.Encode(m.collectionName) </td>
+            <td> @Html.Encode(m.trackName) </td>
+            <td> @Html.Encode(m.collectionCensoredName) </td>
+            <td> @Html.Encode(m.trackCensoredName) </td>
+            <td> @Html.Encode(m.artistViewUrl) </td>
+            <td> @Html.Encode(m.collectionViewUrl) </td>
+            <td> @Html.Encode(m.trackViewUrl) </td>
+            <td> @Html.Encode(m.previewUrl) </td>
+            <td> @Html.Encode(m.artworkUrl30) </td>
+            <td> @Html.Encode(m.artworkUrl60) </td>
+            <td> @Html.Encode(m.artworkUrl100) </td>
+            <td> @Html.Encode(m.collectionPrice) </td>
+            <td> @Html.Encode(m.trackPrice) </td>
+            <td> @Html.Encode(m.collectionHdPrice) </td>
+            <td> @Html.Encode(m.trackHdPrice) </td>
+            <td> @Html.Encode(m.releaseDate) </td>
+            <td> @Html.Encode(m.collectionExplicitness) </td>
+            <td> @Html.Encode(m.trackExplicitness) </td>
+            <td> @Html.Encode(m.discCount) </td>
+            <td> @Html.Encode(m.discNumber) </td>
+            <td> @Html.Encode(m.trackCount) </td>
+            <td> @Html.Encode(m.trackNumber) </td>
+            <td> @Html.Encode(m.trackTimeMillis) </td>
+            <td> @Html.Encode(m.country) </td>
+            <td> @Html.Encode(m.currency) </td>
+            <td> @Html.Encode(m.primaryGenreName) </td>
+            <td> @Html.Encode(m.contentAdvisoryRating) </td>
+            <td> @Html.Encode(m.shortDescription) </td>
+            <td> @Html.Encode(m.longDescription) </td>
+        </tr>
+    }
+</table>
